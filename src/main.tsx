@@ -4,15 +4,7 @@ import App from "./App";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
-const darkTheme = {
-    textColor: "whiteSmoke",
-    backgroundColor: "#111",
-};
-
-const lightTheme = {
-    textColor: "#111",
-    backgroundColor: "whiteSmoke",
-};
+import { darkTheme, lightTheme } from "./theme";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
