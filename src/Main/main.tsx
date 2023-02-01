@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 
 const Father = styled.div`
@@ -49,6 +49,7 @@ const Box = styled.div`
     }
 `;
 const Main = () => {
+    const hello: any = [];
     return (
         <Father>
             <Title>Title</Title>
