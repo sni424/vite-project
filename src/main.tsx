@@ -2,16 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { ThemeProvider } from "styled-components";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, RouterProvider } from "react-router-dom";
+import router from "./Router";
 import "./index.css";
 import { darkTheme, lightTheme } from "./theme";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
     <React.StrictMode>
-        <BrowserRouter>
+        <ThemeProvider theme={darkTheme}>
+            <RouterProvider router={router} />
+        </ThemeProvider>
+        {/* <BrowserRouter>
             <ThemeProvider theme={darkTheme}>
                 <App />
             </ThemeProvider>
-        </BrowserRouter>
+        </BrowserRouter> */}
     </React.StrictMode>
 );
