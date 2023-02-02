@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
+import { users } from "../db";
 
 const Father = styled.div`
     display: flex;
@@ -52,7 +54,16 @@ const Main = () => {
     const hello: any = [];
     return (
         <Father>
-            <Title>Title</Title>
+            <Title>
+                <h1>Users</h1>
+                <ul>
+                    {users.map((user) => (
+                        <li>
+                            <Link to={`/users/${user.id}`}>{user.name}</Link>
+                        </li>
+                    ))}
+                </ul>
+            </Title>
         </Father>
     );
 };
