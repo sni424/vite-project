@@ -4,6 +4,7 @@ import { users } from "../db";
 
 function User() {
     const { userId } = useParams();
+    console.log(typeof userId);
     return (
         <div>
             <h1>
@@ -11,7 +12,11 @@ function User() {
             </h1>
             <hr />
             <Link to="followers">See Follower</Link>
-            <Outlet />
+            <Outlet
+                context={{
+                    nameOfMyuser: users[Number(userId) - 1].name,
+                }}
+            />
         </div>
     );
 }
