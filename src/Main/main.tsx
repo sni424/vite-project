@@ -51,18 +51,10 @@ const Box = styled.div`
     }
 `;
 const Main = () => {
-    const hello: any = [];
     return (
         <Father>
             <Title>
                 <h1>Users</h1>
-                <ul>
-                    {users.map((user) => (
-                        <li>
-                            <Link to={`/users/${user.id}`}>{user.name}</Link>
-                        </li>
-                    ))}
-                </ul>
             </Title>
         </Father>
     );
