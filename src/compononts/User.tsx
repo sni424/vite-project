@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useParams, useSearchParams } from "react-router-dom";
 import { users } from "../db";
 
 function User() {
     const { userId } = useParams();
-    console.log(typeof userId);
+    const [readSearchParms, setSearchParams] = useSearchParams();
+    console.log(readSearchParms.get("geo"));
+    setTimeout(() => {
+        setSearchParams({
+            day: "today",
+            tomorrow: "123",
+        });
+    }, 3000);
     return (
         <div>
             <h1>
