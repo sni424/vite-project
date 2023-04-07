@@ -10,6 +10,8 @@ import PropertyError from "./compononts/PropertyError ";
 import Test from "./compononts/Test";
 import Coins from "./Coins/Coins";
 import Coin from "./Coins/Coin";
+import Chart from "./Coins/chart";
+import Price from "./Coins/Price";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -32,6 +34,7 @@ time, mark, audio, video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  color: inherit;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -70,6 +73,7 @@ body {
 }
 a {
   text-decoration:none;
+  color: inherit;
 }
 `;
 
@@ -82,7 +86,10 @@ function App() {
                 <GlobalStyle />
                 <Routes>
                     <Route path="/" element={<Coins />} />
-                    <Route path=":coinId" element={<Coin />} />
+                    <Route path=":coinId" element={<Coin />}>
+                        <Route path="chart" element={<Chart />} />
+                        <Route path="price" element={<Price />} />
+                    </Route>
                 </Routes>
             </ThemeProvider>
         </>
