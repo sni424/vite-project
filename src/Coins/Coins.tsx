@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { fetchCoins } from "../api";
 
 const Container = styled.div`
     padding: 0px 20px;
@@ -50,7 +52,7 @@ const Img = styled.img`
     margin-right: 10px;
 `;
 
-interface CoinInterface {
+interface Icon {
     id: string;
     name: string;
     symbol: string;
@@ -61,28 +63,33 @@ interface CoinInterface {
 }
 
 const Coins = () => {
-    const [coins, setCoins] = useState<CoinInterface[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+    const urlLink = "https://api.coinpaprika.com/v1/coins";
+    const { isLoading, data } = useQuery<Icon[]>(["allCoins"], () =>
+        fetchCoins(urlLink)
+    );
 
-    useEffect(() => {
-        (async () => {
-            const respone = await fetch("https://api.coinpaprika.com/v1/coins");
-            const json = await respone.json();
-            setCoins(json.slice(0, 100));
-            setLoading(false);
-        })();
-    }, []);
+    // const [coins, setCoins] = useState<CoinInterface[]>([]);
+    // const [loading, setLoading] = useState<boolean>(true);
+
+    // useEffect(() => {
+    //     (async () => {
+    //         const respone = await fetch("https://api.coinpaprika.com/v1/coins");
+    //         const json = await respone.json();
+    //         setCoins(json.slice(0, 100));
+    //         setLoading(false);
+    //     })();
+    // }, []);
 
     return (
         <Container>
             <Header>
                 <Title>Coins</Title>
             </Header>
-            {loading ? (
+            {isLoading ? (
                 <Loader>"Loading..."</Loader>
             ) : (
                 <CoinsList>
-                    {coins.map((coins) => (
+                    {data?.slice(0, 100).map((coins) => (
                         <Coin key={coins.id}>
                             <Link to={`/${coins.id}`} state={coins}>
                                 <Img
