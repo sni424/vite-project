@@ -138,9 +138,9 @@ interface PriceData {
     };
 }
 const Coin = () => {
-    const [loading, setLoading] = useState(true);
     const { coinId } = useParams<RouteParams>();
     const { state } = useLocation<RouteState>();
+    const [loading, setLoading] = useState(true);
     const [info, setInfo] = useState<InfoData>();
     const [priceInfo, setPriceInfo] = useState<PriceData>();
 
