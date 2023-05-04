@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
 
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { isDarkAtom } from "../atoms";
+
 const Container = styled.div`
     padding: 0px 20px;
     max-width: 480px;
@@ -21,7 +24,7 @@ const CoinsList = styled.ul``;
 
 const Coin = styled.li`
     background-color: white;
-    color: ${(props) => props.theme.bgColor};
+    color: ${(props) => props.theme.textColor};
     border-radius: 15px;
     margin-bottom: 10px;
     a {
@@ -61,8 +64,9 @@ interface Icon {
     is_active: boolean;
     type: string;
 }
-
-const Coins = () => {
+interface ICoinsProps {}
+const Coins = ({}: ICoinsProps) => {
+    const changeTheam = useSetRecoilState(isDarkAtom);
     const urlLink = "https://api.coinpaprika.com/v1/coins";
     const { isLoading, data } = useQuery<Icon[]>(["allCoins"], () =>
         fetchCoins(urlLink)
@@ -84,6 +88,13 @@ const Coins = () => {
         <Container>
             <Header>
                 <Title>Coins</Title>
+                <button
+                    onClick={() => {
+                        changeTheam((pre) => !pre);
+                    }}
+                >
+                    Toggle Dark Mode
+                </button>
             </Header>
             {isLoading ? (
                 <Loader>"Loading..."</Loader>

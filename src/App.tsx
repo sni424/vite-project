@@ -2,7 +2,9 @@ import { useState } from "react";
 import { Route, Routes } from "react-router";
 import { ThemeProvider } from "styled-components";
 import { createGlobalStyle } from "styled-components";
-import { theme } from "./theme";
+import { darkTheme, lightTheme } from "./theme";
+import { useRecoilValue } from "recoil";
+import { isDarkAtom } from "./atoms";
 
 import Main from "./Main/main";
 import Header from "./compononts/Header";
@@ -77,12 +79,16 @@ a {
 }
 `;
 
-function App() {
-    const [count, setCount] = useState(0);
+interface IRouterProps {
+    toggleDark: () => void;
+    isDark: boolean;
+}
 
+function App() {
+    const isDark = useRecoilValue(isDarkAtom);
     return (
         <>
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
                 <GlobalStyle />
                 <Routes>
                     <Route path="/" element={<Coins />} />
