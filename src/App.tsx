@@ -1,19 +1,7 @@
-import { useState } from "react";
-import { Route, Routes } from "react-router";
-import { ThemeProvider } from "styled-components";
+import { Route } from "react-router";
+import { Routes } from "react-router";
 import { createGlobalStyle } from "styled-components";
-import { darkTheme, lightTheme } from "./theme";
-import { useRecoilValue } from "recoil";
-import { isDarkAtom } from "./atoms";
-
-import Main from "./Main/main";
-import Header from "./compononts/Header";
-import PropertyError from "./compononts/PropertyError ";
-import Test from "./compononts/Test";
-import Coins from "./Coins/Coins";
-import Coin from "./Coins/Coin";
-import Chart from "./Coins/chart";
-import Price from "./Coins/Price";
+import ToDoList from "./todo/ToDoList";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -79,25 +67,13 @@ a {
 }
 `;
 
-interface IRouterProps {
-    toggleDark: () => void;
-    isDark: boolean;
-}
-
 function App() {
-    const isDark = useRecoilValue(isDarkAtom);
     return (
         <>
-            <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-                <GlobalStyle />
-                <Routes>
-                    <Route path="/" element={<Coins />} />
-                    <Route path=":coinId" element={<Coin />}>
-                        <Route path="chart" element={<Chart />} />
-                        <Route path="price" element={<Price />} />
-                    </Route>
-                </Routes>
-            </ThemeProvider>
+            <GlobalStyle />
+            <Routes>
+                <Route path="/" element={<ToDoList />} />
+            </Routes>
         </>
     );
 }
