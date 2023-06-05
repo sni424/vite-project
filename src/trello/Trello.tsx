@@ -3,10 +3,10 @@ import { hourSelector, minuteState } from "../atoms";
 
 const Trello = () => {
     const [minutes, setMinutes] = useRecoilState(minuteState);
-    const [hour, setHour] = useRecoilState(hourSelector);
     const onMinutesChange = (e: React.FormEvent<HTMLInputElement>) => {
         setMinutes(Number(e.currentTarget.value));
     };
+    const [hour, setHour] = useRecoilState(hourSelector);
     const onHourChange = (e: React.FormEvent<HTMLInputElement>) => {
         setHour(Number(e.currentTarget.value));
     };
