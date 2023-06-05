@@ -3,6 +3,9 @@ import { Routes } from "react-router";
 import { createGlobalStyle } from "styled-components";
 import ToDoList from "./todo/ToDoList";
 import Trello from "./trello/Trello";
+import Bdnd from "./trello/Bdnd";
+import Redux from "./redux/Home";
+import Detail from "./redux/Detail";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -73,7 +76,8 @@ function App() {
         <>
             <GlobalStyle />
             <Routes>
-                <Route path="/" element={<Trello />} />
+                <Route path="/" element={<Redux />} />
+                <Route path=":id" element={<Detail />} />
             </Routes>
         </>
     );
