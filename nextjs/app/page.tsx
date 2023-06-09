@@ -1,5 +1,11 @@
+import NavBar from "../components/NavBar";
+
 function YourComponent() {
-    return <div>1</div>;
+    return (
+        <div>
+            <NavBar />1
+        </div>
+    );
 }
 
 export default YourComponent;
