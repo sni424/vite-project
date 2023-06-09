@@ -1,12 +1,13 @@
+import Title from "../title";
 import Count from "./count";
-import NavBar from "../../components/NavBar";
 
 export default function Home() {
     return (
-        <div>
-            <NavBar />
-            1
-            <Count />
-        </div>
+        <>
+            <Title titleName="DashBoard" key="DashBoard" />
+            <div>
+                <Count />1
+            </div>
+        </>
     );
 }
