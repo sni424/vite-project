@@ -8,11 +8,16 @@
     font-size: 32px;
 }
 .textColor {
-    color: blue;
+    font-weight: 800;
 }
 .margin {
     margin-left: 16px;
+    text-decoration: none;
+    font-size: 32px;
 }
 .textColor2 {
-    color: white;
+    font-weight: 800;
+}
+.fontColor {
+    color: fuchsia;
 }
