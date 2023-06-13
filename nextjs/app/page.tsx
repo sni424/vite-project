@@ -2,7 +2,7 @@ import Head from "next/head";
 import Title from "./title";
 import style from "./page.module.css";
 import Image from "next/image";
-import Movie from "./movie/movie";
+import Movie from "./movieTitle/movie";
 
 function YourComponent() {
     return (
