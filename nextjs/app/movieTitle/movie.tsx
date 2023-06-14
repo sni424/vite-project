@@ -48,13 +48,13 @@ export default function Movie() {
                     <div key={data.id} className={[style.title].join("")}>
                         <Link
                             href={{
-                                pathname: `movies/${data.id}`,
+                                pathname: `movies/${data.title}/${data.id}`,
                                 query: {
                                     id: data.id,
                                     title: data.title,
                                 },
                             }}
-                            as={`/movies/${data.title}`}
+                            as={`/movies/${data.title}/${data.id}`}
                             className={[style.link].join("")}
                         >
                             <img
